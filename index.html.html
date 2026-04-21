@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ServiHogar | Oportunidad para socios e inversionistas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1220;
+      --bg-soft:#10192b;
+      --panel:#111b2f;
+      --panel-2:#16233d;
+      --card:#ffffff;
+      --line:rgba(255,255,255,.09);
+      --text:#ebf1ff;
+      --muted:#9fb0d2;
+      --dark:#0f172a;
+      --brand:#22c55e;
+      --brand-2:#38bdf8;
+      --brand-3:#f59e0b;
+      --danger:#ef4444;
+      --shadow:0 18px 60px rgba(0,0,0,.25);
+      --radius:22px;
+      --radius-sm:14px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Inter",system-ui,-apple-system,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(56,189,248,.18), transparent 28%),
+        radial-gradient(circle at 90% 15%, rgba(34,197,94,.14), transparent 26%),
+        radial-gradient(circle at 80% 80%, rgba(245,158,11,.10), transparent 22%),
+        linear-gradient(180deg, #09111f 0%, #0b1220 100%);
+    }
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:var(--max);margin:auto;padding:0 20px}
+    .topbar{
+      position:sticky;top:0;z-index:200;
+      backdrop-filter: blur(16px);
+      background:rgba(9,17,31,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar-inner{
+      display:flex;align-items:center;justify-content:space-between;
+      min-height:72px;gap:18px
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.02em
+    }
+    .brand-badge{
+      width:14px;height:14px;border-radius:50%;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      box-shadow:0 0 0 8px rgba(56,189,248,.08)
+    }
+    .brand small{
+      display:block;font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.12em;text-transform:uppercase
+    }
+    .nav{display:flex;gap:8px;flex-wrap:wrap}
+    .nav a{
+      font-size:13px;font-weight:600;color:var(--muted);
+      padding:10px 12px;border-radius:999px;transition:.2s ease;
+    }
+    .nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:14px 18px;border-radius:14px;font-weight:700;font-size:14px;
+      transition:.2s ease;cursor:pointer;border:1px solid transparent;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg,var(--brand),#16a34a);
+      color:#07140d;box-shadow:var(--shadow)
+    }
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-secondary{
+      background:rgba(255,255,255,.04);
+      border-color:rgba(255,255,255,.10);
+      color:#fff
+    }
+    .btn-secondary:hover{background:rgba(255,255,255,.08)}
+    .hero{padding:72px 0 48px}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:8px 12px;border:1px solid rgba(56,189,248,.22);
+      border-radius:999px;font-size:12px;font-weight:700;
+      color:#b7d9ff;background:rgba(56,189,248,.08);text-transform:uppercase;letter-spacing:.08em
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center;margin-top:18px
+    }
+    .hero h1{
+      margin:18px 0 14px;
+      font-family:"Playfair Display",serif;
+      font-size:clamp(2.6rem,6vw,5.1rem);
+      line-height:.98;font-weight:700;letter-spacing:-.03em
+    }
+    .hero p.lead{
+      max-width:780px;font-size:1.08rem;line-height:1.75;color:var(--muted);margin:0 0 26px
+    }
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+    .stats{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px
+    }
+    .stat{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;padding:18px 16px
+    }
+    .stat strong{display:block;font-size:1.7rem;line-height:1;color:#fff}
+    .stat span{display:block;margin-top:8px;color:var(--muted);font-size:.92rem;line-height:1.45}
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:28px;padding:20px;box-shadow:var(--shadow)
+    }
+    .mock-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+    .pill{
+      font-size:11px;font-weight:800;padding:7px 10px;border-radius:999px;
+      letter-spacing:.08em;text-transform:uppercase
+    }
+    .pill-green{background:rgba(34,197,94,.14);color:#9ff7bf}
+    .pill-blue{background:rgba(56,189,248,.12);color:#b7e7ff}
+    .screen{
+      background:#f8fafc;color:#0f172a;border-radius:24px;padding:14px;border:1px solid rgba(15,23,42,.06)
+    }
+    .screen-header{
+      display:flex;justify-content:space-between;align-items:center;margin-bottom:12px
+    }
+    .screen-box{
+      background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:12px;margin-bottom:10px;
+      box-shadow:0 5px 15px rgba(15,23,42,.06)
+    }
+    .screen-box h4{margin:0 0 6px;font-size:.95rem}
+    .screen-box p{margin:0;color:#64748b;font-size:.85rem;line-height:1.5}
+    .section{padding:82px 0;border-top:1px solid rgba(255,255,255,.06)}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+    .section-kicker{
+      color:#8dcfff;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase
+    }
+    .section h2{
+      margin:8px 0 0;font-size:clamp(2rem,4vw,3rem);line-height:1.05;
+      font-family:"Playfair Display",serif
+    }
+    .section-desc{max-width:760px;color:var(--muted);line-height:1.8}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+      border-radius:22px;padding:22px;box-shadow:var(--shadow)
+    }
+    .card.light{
+      background:#fff;color:var(--dark);border:1px solid #e5e7eb
+    }
+    .card h3,.card h4{margin:0 0 10px}
+    .card p{margin:0;color:inherit;opacity:.86;line-height:1.75}
+    .icon{
+      width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
+      background:rgba(56,189,248,.10);border:1px solid rgba(56,189,248,.15);
+      font-size:1.25rem;margin-bottom:14px
+    }
+    .split{
+      display:grid;grid-template-columns:1fr 1fr;gap:18px
+    }
+    .list{display:grid;gap:10px;margin-top:14px}
+    .list .item{
+      display:flex;gap:12px;align-items:flex-start;
+      padding:12px;border:1px solid rgba(255,255,255,.07);
+      border-radius:14px;background:rgba(255,255,255,.03)
+    }
+    .dot{
+      min-width:10px;height:10px;border-radius:50%;background:var(--brand);margin-top:7px
+    }
+    .market-band{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px
+    }
+    .market{
+      background:linear-gradient(180deg, rgba(56,189,248,.12), rgba(255,255,255,.03));
+      border:1px solid rgba(56,189,248,.15);border-radius:18px;padding:18px
+    }
+    .market strong{display:block;font-size:1.2rem}
+    .market span{display:block;margin-top:7px;color:var(--muted);font-size:.92rem}
+    .tabs{
+      display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px
+    }
+    .tab-btn{
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+      color:#dbeafe;padding:11px 14px;border-radius:12px;font-weight:700;font-size:13px;cursor:pointer
+    }
+    .tab-btn.active{background:linear-gradient(135deg,var(--brand-2),#2563eb);color:#fff;border-color:transparent}
+    .demo-panels{position:relative}
+    .demo-panel{display:none}
+    .demo-panel.active{display:block}
+    .demo-shell{
+      display:grid;grid-template-columns:.9fr 1.1fr;gap:18px
+    }
+    .phone{
+      background:#eef2ff;border-radius:28px;padding:16px;border:8px solid #0f172a;color:#0f172a;
+      max-width:320px;box-shadow:0 25px 60px rgba(0,0,0,.32)
+    }
+    .phone-notch{height:18px;width:110px;border-radius:999px;background:#0f172a;margin:0 auto 14px}
+    .phone-ui{
+      background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:14px
+    }
+    .phone-row{
+      padding:12px;border:1px solid #e5e7eb;border-radius:14px;margin-bottom:10px;background:#f8fafc
+    }
+    .phone-row strong{display:block;font-size:.96rem}
+    .phone-row span{font-size:.83rem;color:#64748b}
+    .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .feature-mini{
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;padding:14px
+    }
+    .feature-mini strong{display:block;margin-bottom:7px}
+    .biz-grid{
+      display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px
+    }
+    .price-card{
+      position:relative;overflow:hidden
+    }
+    .price-card.highlight{
+      border:1px solid rgba(34,197,94,.35);
+      box-shadow:0 18px 60px rgba(34,197,94,.12)
+    }
+    .price-tag{
+      position:absolute;top:14px;right:14px;
+      background:rgba(34,197,94,.14);color:#a7f3d0;
+      font-size:11px;font-weight:800;padding:7px 10px;border-radius:999px;text-transform:uppercase
+    }
+    .price-value{
+      font-size:2rem;font-weight:800;margin:8px 0 12px
+    }
+    .price-value small{font-size:.95rem;color:var(--muted);font-weight:700}
+    .bar{
+      height:12px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:10px
+    }
+    .bar > span{
+      display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand-2));border-radius:999px
+    }
+    .compare{
+      display:grid;grid-template-columns:1fr 1fr;gap:18px
+    }
+    .risk{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:16px
+    }
+    .risk .card{padding:18px}
+    .badge{
+      display:inline-flex;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px
+    }
+    .badge-red{background:rgba(239,68,68,.12);color:#fecaca}
+    .badge-yellow{background:rgba(245,158,11,.12);color:#fde68a}
+    .badge-green{background:rgba(34,197,94,.12);color:#bbf7d0}
+    .partner-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:16px
+    }
+    .timeline{
+      display:grid;gap:16px
+    }
+    .time-row{
+      display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start
+    }
+    .time-pill{
+      position:sticky;top:90px;
+      background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.15);
+      color:#bfe7ff;padding:14px;border-radius:18px;font-size:13px;font-weight:800;text-align:center
+    }
+    .cta{
+      background:linear-gradient(135deg, rgba(34,197,94,.14), rgba(56,189,248,.12));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:28px;padding:34px;display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center;
+      box-shadow:var(--shadow)
+    }
+    .cta h3{
+      margin:0 0 10px;font-size:clamp(1.8rem,3.2vw,2.7rem);font-family:"Playfair Display",serif
+    }
+    .cta p{margin:0;color:var(--muted);line-height:1.8}
+    footer{
+      padding:34px 0 50px;color:var(--muted);font-size:13px;border-top:1px solid rgba(255,255,255,.06)
+    }
+    [data-reveal]{opacity:0;transform:translateY(16px);transition:.55s ease}
+    [data-reveal].show{opacity:1;transform:none}
+    @media (max-width: 1100px){
+      .hero-grid,.demo-shell,.cta{grid-template-columns:1fr}
+      .partner-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width: 860px){
+      .stats,.grid-3,.biz-grid,.market-band,.partner-grid,.grid-2,.split,.compare,.risk,.feature-grid{grid-template-columns:1fr}
+      .time-row{grid-template-columns:1fr}
+      .time-pill{position:static}
+      .nav{display:none}
+    }
+    @media (max-width: 560px){
+      .topbar-inner{min-height:64px}
+      .hero{padding-top:46px}
+      .hero-actions{flex-direction:column;align-items:stretch}
+      .btn{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="#inicio" class="brand">
+        <span class="brand-badge"></span>
+        <div>
+          ServiHogar
+          <small>Pitch para socios e inversionistas</small>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="#oportunidad">Oportunidad</a>
+        <a href="#app">La app</a>
+        <a href="#modelo">Modelo</a>
+        <a href="#mercado">Mercado</a>
+        <a href="#socios">Socios</a>
+        <a href="#roadmap">Roadmap</a>
+      </nav>
+      <a class="btn btn-secondary" href="#contacto">Hablar ahora</a>
+    </div>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <span class="eyebrow" data-reveal>Guayaquil · Samborondón · Daule · Salitre</span>
+      <div class="hero-grid">
+        <div>
+          <h1 data-reveal>La oportunidad de <br><span style="color:#7dd3fc">digitalizar</span> los servicios del hogar en Ecuador.</h1>
+          <p class="lead" data-reveal>
+            ServiHogar no se presenta como una app más. Se presenta como una plataforma rentable para ordenar un mercado informal, conectar demanda con técnicos verificados y crear una operación escalable para socios, inversionistas y fuerza comercial senior.
+          </p>
+          <div class="hero-actions" data-reveal>
+            <a href="#modelo" class="btn btn-primary">Ver modelo de negocio</a>
+            <a href="#socios" class="btn btn-secondary">Oportunidad para socios</a>
+          </div>
+          <div class="stats">
+            <div class="stat" data-reveal>
+              <strong>MVP</strong>
+              <span>Base funcional ya construida para acelerar validación y negociación.</span>
+            </div>
+            <div class="stat" data-reveal>
+              <strong>60 días</strong>
+              <span>Acceso sin inscripción para técnicos verificados en fase de captación.</span>
+            </div>
+            <div class="stat" data-reveal>
+              <strong>B2C + B2B</strong>
+              <span>Clientes directos más alianzas con edificios, urbanizaciones y oficinas.</span>
+            </div>
+            <div class="stat" data-reveal>
+              <strong>Escalable</strong>
+              <span>Modelo apto para expansión por ciudad, franquicia o white-label.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card" data-reveal>
+          <div class="mock-top">
+            <strong>Vista resumida del negocio</strong>
+            <span class="pill pill-green">Listo para pitch</span>
+          </div>
+          <div class="screen">
+            <div class="screen-header">
+              <strong>ServiHogar</strong>
+              <span class="pill pill-blue">Oportunidad</span>
+            </div>
+            <div class="screen-box">
+              <h4>Problema</h4>
+              <p>Mercado informal, desordenado y sin trazabilidad en servicios del hogar.</p>
+            </div>
+            <div class="screen-box">
+              <h4>Solución</h4>
+              <p>Marketplace con técnicos verificados, control operativo, reputación y pagos estructurados.</p>
+            </div>
+            <div class="screen-box">
+              <h4>Motor comercial</h4>
+              <p>Captación de técnicos + vendedores senior + alianzas con urbanizaciones y edificios.</p>
+            </div>
+            <div class="screen-box">
+              <h4>Monetización</h4>
+              <p>Fee por servicio, planes para técnicos, B2B, urgencias y expansión posterior.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="oportunidad">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">01 · Tesis de negocio</div>
+          <h2>Esto no es solo tecnología. <br>Es <span style="color:#86efac">infraestructura comercial</span>.</h2>
+        </div>
+        <p class="section-desc">
+          El error sería vender ServiHogar como “una app de técnicos”. La oportunidad real es construir una plataforma que ordena oferta y demanda en un mercado desatendido, con capacidad de generar recurrencia, reputación y datos.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card" data-reveal>
+          <div class="icon">🏠</div>
+          <h3>Problema del cliente</h3>
+          <p>El hogar necesita técnicos, pero hoy se resuelve con improvisación: contactos sueltos, cero garantías, precios arbitrarios y mala experiencia.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="icon">🧰</div>
+          <h3>Problema del técnico</h3>
+          <p>El técnico depende del boca a boca, compite por precio, no construye reputación formal y vive con flujo irregular.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="icon">📈</div>
+          <h3>Problema del mercado</h3>
+          <p>Existe demanda, pero no hay una capa confiable de organización. Ahí es donde entra una plataforma rentable y escalable.</p>
+        </div>
+      </div>
+
+      <div class="split" style="margin-top:18px">
+        <div class="card" data-reveal>
+          <h3>Qué resuelve ServiHogar</h3>
+          <div class="list">
+            <div class="item"><span class="dot"></span><div><strong>Confianza</strong><br><span style="color:var(--muted)">Técnicos filtrados, identidad visible y reglas claras.</span></div></div>
+            <div class="item"><span class="dot"></span><div><strong>Trazabilidad</strong><br><span style="color:var(--muted)">Historial, cotización, seguimiento y evidencia del servicio.</span></div></div>
+            <div class="item"><span class="dot"></span><div><strong>Orden comercial</strong><br><span style="color:var(--muted)">Permite vender servicio, operación, afiliación y expansión territorial.</span></div></div>
+          </div>
+        </div>
+        <div class="card" data-reveal>
+          <h3>Por qué esto puede ser rentable</h3>
+          <div class="list">
+            <div class="item"><span class="dot" style="background:var(--brand-2)"></span><div><strong>Fee por servicio</strong><br><span style="color:var(--muted)">Cada servicio atendido deja ingreso para la plataforma.</span></div></div>
+            <div class="item"><span class="dot" style="background:var(--brand-3)"></span><div><strong>Planes futuros para técnicos</strong><br><span style="color:var(--muted)">Luego del período gratis, se activa monetización recurrente.</span></div></div>
+            <div class="item"><span class="dot" style="background:var(--danger)"></span><div><strong>Contratos B2B</strong><br><span style="color:var(--muted)">Urbanizaciones, edificios y oficinas pueden concentrar alta demanda.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="app">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">02 · Producto</div>
+          <h2>Una presentación más viva de la <span style="color:#7dd3fc">app</span>.</h2>
+        </div>
+        <p class="section-desc">
+          Para vender la oportunidad, el socio debe visualizar el producto, no solo leerlo. Aquí la app se presenta como experiencia, operación y negocio.
+        </p>
+      </div>
+
+      <div class="tabs" data-reveal>
+        <button class="tab-btn active" data-tab="cliente">Cliente</button>
+        <button class="tab-btn" data-tab="tecnico">Técnico</button>
+        <button class="tab-btn" data-tab="admin">Administrador</button>
+        <button class="tab-btn" data-tab="flujo">Flujo comercial</button>
+      </div>
+
+      <div class="demo-panels">
+        <div class="demo-panel active" id="tab-cliente">
+          <div class="demo-shell">
+            <div class="phone" data-reveal>
+              <div class="phone-notch"></div>
+              <div class="phone-ui">
+                <div class="phone-row">
+                  <strong>Solicitar servicio</strong>
+                  <span>Electricidad · Plomería · A/C · Cerrajería</span>
+                </div>
+                <div class="phone-row">
+                  <strong>Técnico asignado</strong>
+                  <span>Perfil visible, calificación y tiempo estimado</span>
+                </div>
+                <div class="phone-row">
+                  <strong>Cotización previa</strong>
+                  <span>El cliente aprueba antes de avanzar</span>
+                </div>
+                <div class="phone-row">
+                  <strong>Seguimiento y calificación</strong>
+                  <span>El servicio deja historial y reputación</span>
+                </div>
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="feature-mini" data-reveal>
+                <strong>Compra de confianza</strong>
+                <p>El usuario deja de improvisar con contactos informales y entra a una experiencia más segura.</p>
+              </div>
+              <div class="feature-mini" data-reveal>
+                <strong>Claridad de precio</strong>
+                <p>No se negocia a ciegas en la puerta: hay estructura, fee y aprobación de cotización.</p>
+              </div>
+              <div class="feature-mini" data-reveal>
+                <strong>Mejor experiencia</strong>
+                <p>El servicio se siente más profesional, medible y confiable.</p>
+              </div>
+              <div class="feature-mini" data-reveal>
+                <strong>Potencial de repetición</strong>
+                <p>Un cliente bien atendido se vuelve recurrente y reduce el costo de adquisición futuro.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-panel" id="tab-tecnico">
+          <div class="demo-shell">
+            <div class="phone" data-reveal>
+              <div class="phone-notch"></div>
+              <div class="phone-ui">
+                <div class="phone-row">
+                  <strong>Panel de casos</strong>
+                  <span>Disponibilidad, ingresos y solicitudes activas</span>
+                </div>
+                <div class="phone-row">
+                  <strong>60 días sin inscripción</strong>
+                  <span>Entrada con menor fricción para captar técnicos buenos</span>
+                </div>
+                <div class="phone-row">
+                  <strong>Reputación formal</strong>
+                  <span>Historial, calificaciones y control de desempeño</span>
+                </div>
+                <div class="phone-row">
+                  <strong>Escalamiento comercial</strong>
+                  <span>Más casos por rendimiento y cumplimiento</span>
+                </div>
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="feature-mini" data-reveal>
+                <strong>Captación inteligente</strong>
+                <p>Quitar la inscripción inicial acelera el crecimiento del lado oferta, que es crítico al arranque.</p>
+              </div>
+              <div class="feature-mini" data-reveal>
+                <strong>No gratis para cualquiera</strong>
+                <p>Solo técnicos verificados, con reglas, control y posibilidad de salida si incumplen.</p>
+              </div>
+              <div class="feature-mini" data-reveal>
+                <strong>Más atractivo comercial</strong>
+                <p>Le vendes al técnico una oportunidad real de trabajo, no un simple registro.</p>
+              </div>
+              <div class="feature-mini" data-reveal>
+                <strong>Camino a monetización</strong>
+                <p>Después de validar tracción, se activan planes Base, Activo y Pro.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-panel" id="tab-admin">
+          <div class="demo-shell">
+            <div class="phone" data-reveal>
+              <div class="phone-notch"></div>
+              <div class="phone-ui">
+                <div class="phone-row">
+                  <strong>Dashboard general</strong>
+                  <span>Servicios, ingresos, pagos y alertas operativas</span>
+                </div>
+                <div class="phone-row">
+                  <strong>Asignación y seguimiento</strong>
+                  <span>Control de casos, estados y técnicos disponibles</span>
+                </div>
+                <div class="phone-row">
+                  <strong>Sanciones y calidad</strong>
+                  <span>Protección de reputación desde la operación</span>
+                </div>
+                <div class="phone-row">
+                  <strong>Modelo escalable</strong>
+                  <span>Base para panel web, B2B y licenciamiento</span>
+                </div>
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="feature-mini" data-reveal>
+                <strong>Negocio medible</strong>
+                <p>El valor no está solo en la app. Está en la capacidad de administrar calidad y recurrencia.</p>
+              </div>
+              <div class="feature-mini" data-reveal>
+                <strong>Listo para capitalizar</strong>
+                <p>Un panel robusto vuelve más fácil vender inversión, expansión y acuerdos comerciales.</p>
+              </div>
+              <div class="feature-mini" data-reveal>
+                <strong>Potencial B2B</strong>
+                <p>Administraciones y edificios valoran una solución con control, historial y tiempos.</p>
+              </div>
+              <div class="feature-mini" data-reveal>
+                <strong>Activos de datos</strong>
+                <p>A medida que crece el uso, la plataforma acumula demanda, comportamiento y reputación.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-panel" id="tab-flujo">
+          <div class="demo-shell">
+            <div class="phone" data-reveal>
+              <div class="phone-notch"></div>
+              <div class="phone-ui">
+                <div class="phone-row"><strong>1. Cliente solicita</strong><span>Elige categoría y nivel de urgencia</span></div>
+                <div class="phone-row"><strong>2. Plataforma asigna</strong><span>Selecciona técnico según zona y disponibilidad</span></div>
+                <div class="phone-row"><strong>3. Técnico cotiza</strong><span>Cliente valida antes de ejecutar</span></div>
+                <div class="phone-row"><strong>4. Se cierra y califica</strong><span>Se protege reputación y repetición</span></div>
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="feature-mini" data-reveal>
+                <strong>Flujo claro = negocio vendible</strong>
+                <p>Entre más simple se entienda el recorrido, más fácil es conseguir socios y vendedores senior.</p>
+              </div>
+              <div class="feature-mini" data-reveal>
+                <strong>Menos fricción comercial</strong>
+                <p>La claridad en el proceso acelera el cierre con edificios, aliados y técnicos.</p>
+              </div>
+              <div class="feature-mini" data-reveal>
+                <strong>Base para SOPs</strong>
+                <p>Este flujo puede convertirse en manual de ventas, onboarding y operación por ciudad.</p>
+              </div>
+              <div class="feature-mini" data-reveal>
+                <strong>Escala replicable</strong>
+                <p>Si funciona en Guayaquil, luego puede desplegarse a nuevas zonas con la misma lógica.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="modelo">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">03 · Monetización</div>
+          <h2>Modelo pensado para <span style="color:#86efac">validar</span> y luego <span style="color:#7dd3fc">escalar</span>.</h2>
+        </div>
+        <p class="section-desc">
+          No conviene matar el crecimiento cobrando demasiado pronto. La prioridad inicial es poblar oferta con técnicos buenos, generar servicios y luego abrir monetización recurrente.
+        </p>
+      </div>
+
+      <div class="biz-grid">
+        <div class="card price-card" data-reveal>
+          <h3>Fase de entrada</h3>
+          <div class="price-value">60 días <small>sin inscripción</small></div>
+          <p>Solo para técnicos verificados. La plataforma reduce barrera de entrada y acelera captación inicial.</p>
+          <div class="bar"><span style="width:85%"></span></div>
+        </div>
+        <div class="card price-card highlight" data-reveal>
+          <span class="price-tag">Recomendado</span>
+          <h3>Ingreso inmediato</h3>
+          <div class="price-value">Fee <small>por servicio atendido</small></div>
+          <p>La plataforma monetiza por actividad real. Más sano para validar tracción sin ahuyentar oferta.</p>
+          <div class="bar"><span style="width:72%"></span></div>
+        </div>
+        <div class="card price-card" data-reveal>
+          <h3>Fase de escalamiento</h3>
+          <div class="price-value">Planes <small>Base · Activo · Pro</small></div>
+          <p>Luego del período gratis, se estructura monetización por visibilidad, prioridad y volumen.</p>
+          <div class="bar"><span style="width:65%"></span></div>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:18px">
+        <div class="card" data-reveal>
+          <div class="icon">💵</div>
+          <h3>Ingresos por servicio</h3>
+          <p>El cliente paga revisión / fee operativo. La plataforma captura margen directo por cada caso generado y atendido.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="icon">🏢</div>
+          <h3>Ingresos B2B</h3>
+          <p>Urbanizaciones, edificios, conjuntos y oficinas pueden contratar operación preferencial o convenios mensuales.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="icon">🚀</div>
+          <h3>Escalamiento posterior</h3>
+          <p>Planes de técnicos, licenciamiento, white-label o expansión con operadores comerciales por ciudad.</p>
+        </div>
+      </div>
+
+      <div class="compare" style="margin-top:18px">
+        <div class="card" data-reveal>
+          <h3>Qué NO conviene</h3>
+          <div class="list">
+            <div class="item"><span class="dot" style="background:var(--danger)"></span><div><strong>Cobrar inscripción desde el día 1</strong><br><span style="color:var(--muted)">Te frena captación y te llena de resistencia comercial.</span></div></div>
+            <div class="item"><span class="dot" style="background:var(--danger)"></span><div><strong>Hablar solo de tecnología</strong><br><span style="color:var(--muted)">Eso no mueve inversión si no se entiende el negocio.</span></div></div>
+            <div class="item"><span class="dot" style="background:var(--danger)"></span><div><strong>Abrir demasiadas ciudades al inicio</strong><br><span style="color:var(--muted)">Te dispersa y destruye foco operativo.</span></div></div>
+          </div>
+        </div>
+        <div class="card" data-reveal>
+          <h3>Qué sí conviene</h3>
+          <div class="list">
+            <div class="item"><span class="dot"></span><div><strong>Validar con oferta fuerte</strong><br><span style="color:var(--muted)">Primero técnicos serios. Luego volumen. Después membresía.</span></div></div>
+            <div class="item"><span class="dot"></span><div><strong>Usar fuerza comercial</strong><br><span style="color:var(--muted)">Vendedores senior para alianzas y captación institucional.</span></div></div>
+            <div class="item"><span class="dot"></span><div><strong>Presentar la rentabilidad</strong><br><span style="color:var(--muted)">Un socio invierte cuando entiende el camino a escala.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="mercado">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">04 · Mercado inicial</div>
+          <h2>Guayaquil, Samborondón, Daule y Salitre como <span style="color:#fcd34d">territorio de validación</span>.</h2>
+        </div>
+        <p class="section-desc">
+          El foco inicial no debe ser “todo Ecuador”. Debe ser un mapa comercial concreto donde existan hogares, edificios y urbanizaciones con necesidad recurrente y mejor disposición a pagar por confianza.
+        </p>
+      </div>
+
+      <div class="market-band">
+        <div class="market" data-reveal><strong>Guayaquil</strong><span>Masa crítica, diversidad de demanda y mayor velocidad de validación.</span></div>
+        <div class="market" data-reveal><strong>Samborondón</strong><span>Segmento con más valor percibido por confianza, rapidez y servicio formal.</span></div>
+        <div class="market" data-reveal><strong>Daule</strong><span>Crecimiento urbano y potencial fuerte en urbanizaciones residenciales.</span></div>
+        <div class="market" data-reveal><strong>Salitre</strong><span>Zona con oportunidad comercial si se entra con red y enfoque territorial.</span></div>
+      </div>
+
+      <div class="grid-2" style="margin-top:18px">
+        <div class="card" data-reveal>
+          <h3>Mercado visible para socios</h3>
+          <p>Lo que el inversionista debe ver no es una ciudad abstracta. Debe ver zonas concretas, clientes concretos y canales concretos para monetizar más rápido.</p>
+        </div>
+        <div class="card" data-reveal>
+          <h3>Canales de entrada inteligentes</h3>
+          <p>Administradores de edificios, urbanizaciones, oficinas pequeñas, redes de recomendación, equipos comerciales y activación digital local.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="socios">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">05 · Lo que buscamos</div>
+          <h2>Buscamos <span style="color:#7dd3fc">capital</span>, socios comerciales y <span style="color:#86efac">vendedores senior</span>.</h2>
+        </div>
+        <p class="section-desc">
+          El cuello de botella ya no es imaginar la idea. Es moverla comercialmente, estructurar capital de lanzamiento y acelerar penetración territorial con gente que abra puertas.
+        </p>
+      </div>
+
+      <div class="partner-grid">
+        <div class="card" data-reveal>
+          <div class="icon">💰</div>
+          <h3>Inversionistas</h3>
+          <p>Capital para publicación, mejora de producto, tracción inicial, campañas y estructura comercial.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="icon">🤝</div>
+          <h3>Socios comerciales</h3>
+          <p>Personas con acceso a edificios, urbanizaciones, oficinas y redes que puedan abrir mercado rápido.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="icon">📣</div>
+          <h3>Vendedores senior</h3>
+          <p>Perfil de cierre, experiencia B2B y enfoque territorial para hacer despegar captación de aliados y clientes.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="icon">🛠️</div>
+          <h3>Aliados de ejecución</h3>
+          <p>Operación, control de calidad y construcción de red de técnicos por zona.</p>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:18px">
+        <div class="card" data-reveal>
+          <h3>Qué ve un inversionista inteligente aquí</h3>
+          <div class="list">
+            <div class="item"><span class="dot"></span><div><strong>Mercado informal a ordenar</strong><br><span style="color:var(--muted)">Gran problema, baja sofisticación, espacio para plataforma.</span></div></div>
+            <div class="item"><span class="dot"></span><div><strong>Producto ya visible</strong><br><span style="color:var(--muted)">No es humo. Hay una base que ya se puede mostrar y negociar.</span></div></div>
+            <div class="item"><span class="dot"></span><div><strong>Modelo de expansión</strong><br><span style="color:var(--muted)">La misma lógica puede replicarse por ciudad y por operador.</span></div></div>
+          </div>
+        </div>
+        <div class="card" data-reveal>
+          <h3>Qué ve un socio comercial serio</h3>
+          <div class="list">
+            <div class="item"><span class="dot" style="background:var(--brand-2)"></span><div><strong>Negocio defendible</strong><br><span style="color:var(--muted)">Más valor que vender técnicos sueltos o contactos de WhatsApp.</span></div></div>
+            <div class="item"><span class="dot" style="background:var(--brand-3)"></span><div><strong>Comercialización territorial</strong><br><span style="color:var(--muted)">Puede operarse por zonas, convenios y estructuras de crecimiento local.</span></div></div>
+            <div class="item"><span class="dot" style="background:var(--danger)"></span><div><strong>Potencial de equity</strong><br><span style="color:var(--muted)">Hay espacio para entrar temprano y capturar valorización si ejecuta bien.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="riesgos">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">06 · Riesgos</div>
+          <h2>Riesgos reales. Mitigación <span style="color:#fca5a5">real</span>.</h2>
+        </div>
+        <p class="section-desc">
+          Lo serio no es negar los riesgos. Lo serio es mostrar que ya entiendes dónde te puedes romper y cómo piensas contenerlo.
+        </p>
+      </div>
+
+      <div class="risk">
+        <div class="card" data-reveal>
+          <span class="badge badge-red">Riesgo alto</span>
+          <h3>Fuga fuera de plataforma</h3>
+          <p>Cliente y técnico pueden intentar irse por fuera. Se mitiga con reglas, protección del flujo, incentivos y foco en reputación.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="badge badge-red">Riesgo alto</span>
+          <h3>Calidad inconsistente</h3>
+          <p>Si entra cualquier técnico, la marca se daña rápido. Por eso la fase gratis no puede ser sin filtro.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="badge badge-yellow">Riesgo medio</span>
+          <h3>Monetizar demasiado pronto</h3>
+          <p>Cobrar membresía antes de probar volumen puede frenar crecimiento. Primero se valida oferta y demanda.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="badge badge-green">Mitigación</span>
+          <h3>Foco territorial</h3>
+          <p>No abrir todo de golpe. Arrancar con territorios definidos y equipos comerciales concretos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="roadmap">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">07 · Hoja de ruta</div>
+          <h2>Ruta para convertir esto en un <span style="color:#86efac">negocio escalable</span>.</h2>
+        </div>
+        <p class="section-desc">
+          El socio debe ver secuencia. No caos. No improvisación. Una app sin ruta no vale mucho. Una app con tracción comercial sí.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="time-row">
+          <div class="time-pill" data-reveal>Fase 1<br>0–90 días</div>
+          <div class="card" data-reveal>
+            <h3>Captación y validación territorial</h3>
+            <p>Reclutar técnicos verificados, estructurar oferta comercial, mostrar producto, captar primeros aliados y activar demanda en Guayaquil / Samborondón / Daule / Salitre.</p>
+          </div>
+        </div>
+        <div class="time-row">
+          <div class="time-pill" data-reveal>Fase 2<br>3–6 meses</div>
+          <div class="card" data-reveal>
+            <h3>Tracción comercial y alianzas</h3>
+            <p>Entrar a edificios, urbanizaciones y oficinas. Fortalecer operación, discurso comercial y métricas básicas de retención y calidad.</p>
+          </div>
+        </div>
+        <div class="time-row">
+          <div class="time-pill" data-reveal>Fase 3<br>6–12 meses</div>
+          <div class="card" data-reveal>
+            <h3>Monetización recurrente y expansión</h3>
+            <p>Activar planes para técnicos, estructura de crecimiento comercial, expansión a nuevas zonas y narrativa sólida para inversión mayor o white-label.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contacto">
+    <div class="wrap">
+      <div class="cta" data-reveal>
+        <div>
+          <h3>Estamos buscando construir esto con socios que entiendan negocio, capital y expansión.</h3>
+          <p>
+            Si ves valor en ordenar este mercado y convertirlo en una plataforma rentable, esta es la etapa para conversar. Buscamos inversión, músculo comercial y vendedores senior que quieran entrar temprano.
+          </p>
+        </div>
+        <div>
+          <div class="card light">
+            <h3 style="margin-top:0">Siguiente paso</h3>
+            <p>Agenda una conversación para revisar el modelo, la estructura comercial y la oportunidad de participación.</p>
+            <div style="display:grid;gap:10px;margin-top:18px">
+              <a class="btn btn-primary" href="mailto:im.agrojardineria@hotmail.com?subject=Inter%C3%A9s%20en%20ServiHogar">Quiero conversar</a>
+              <a class="btn btn-secondary" href="#inicio">Volver arriba</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      ServiHogar · Versión enfocada en socios, capitalización y expansión comercial · Abril 2026
+    </div>
+  </footer>
+
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.demo-panel');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html>
